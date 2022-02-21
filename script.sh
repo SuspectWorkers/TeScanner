@@ -2,7 +2,7 @@
 
 echo "" > hosts_filtered.txt
 while read d || [[ -n $d ]]; do
-  ip=$(curl -v --silent $d 2>&1 | grep HTTP/1.1)
+  ip=$(curl -s -w "%{http_code}\n" -o /dev/null $d)
   ipu=$(curl -v --silent $d 2>&1 | grep Server:)
   if [ -n "$ip" ]; then
     echo "[+] '$d' => $ip    $ipu"
@@ -11,3 +11,4 @@ while read d || [[ -n $d ]]; do
     echo "[!] '$d' => [RESOLVE ERROR]"
   fi
 done < hosts.txt
+
