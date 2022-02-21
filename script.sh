@@ -8,8 +8,6 @@ while read d || [[ -n $d ]]; do
   if [ -n "$ip" ]; then
     echo "[+] '$d' => $ip    $ipu"
     echo "$ip   $d   $ipu" >> hosts_filtered.txt
-  else
-    echo "[!] '$d' => [RESOLVE ERROR]"
   fi
 done < hosts.txt
 
