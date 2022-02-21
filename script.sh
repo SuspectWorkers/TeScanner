@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-
+echo "1\n" > hosts_filtered.txt
 
 while read d || [[ -n $d ]]; do
   ip=$(curl -v --silent $host 2>&1 | grep HTTP/1.1)
