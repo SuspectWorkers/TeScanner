@@ -3,7 +3,7 @@
 echo "" > hosts_filtered.txt
 while read d || [[ -n $d ]]; do
   ip=$(curl -s -w "%{http_code}\n" -o /dev/null $d|head -1)
-  ipu=$(curl -v --silent $d 2>&1 | grep -io server: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
+  ipu=$(curl -v --silent $d 2>&1 | grep -i server: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
   ipua=$(curl -v --silent $d 2>&1 | grep -i via: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
   ipus=$(curl -v --silent $d 2>&1 | grep -i x-cdn: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
   iput=$(curl -v --silent $d 2>&1 | grep -i x-cache: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
