@@ -3,11 +3,11 @@
 echo "" > hosts_filtered.txt
 while read d || [[ -n $d ]]; do
   ip=$(curl -s -w "%{http_code}\n" -o /dev/null $d|head -1)
-  ipu=$(curl -v --silent $d 2>&1 | grep Server: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
-  ipua=$(curl -v --silent $d 2>&1 | grep via: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
-  ipus=$(curl -v --silent $d 2>&1 | grep x-cdn: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
-  iput=$(curl -v --silent $d 2>&1 | grep x-cache: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
-  ipum=$(curl -v --silent $d 2>&1 | grep x-id: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
+  ipu=$(curl -v --silent $d 2>&1 | grep -io server: | cut --delimiter=" " -f 3 | cut --delimiter="^" -f 1 |head -1)
+  ipua=$(curl -v --silent $d 2>&1 | grep -io via: | cut --delimiter="^" -f 1 |head -1)
+  ipus=$(curl -v --silent $d 2>&1 | grep -io x-cdn: | cut --delimiter="^" -f 1 |head -1)
+  iput=$(curl -v --silent $d 2>&1 | grep -io x-cache: | cut --delimiter="^" -f 1 |head -1)
+  ipum=$(curl -v --silent $d 2>&1 | grep -io x-id: | cut --delimiter="^" -f 1 |head -1)
   ipas=$(curl -L -v --silent $d 2>&1 | grep "200 OK" | cut --delimiter=" " -f 2,3,4|head -1)
   if [ -n "$ip" ]; then
     echo "[+] '$d' => $ip    $ipu"
