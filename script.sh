@@ -1,5 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+pkg up -y && pkg install openssl wget -y
+
 echo "" > hosts_filtered.txt
 while read d || [[ -n $d ]]; do
   ip=$(curl -s -w "%{http_code}\n" -o /dev/null $d|head -1)
