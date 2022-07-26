@@ -9,6 +9,6 @@ In output you see -> response code, server type , via (some cdn headers) and loc
 
 ## Ready and ToDo
   [x]Response scan is fully done
-  [ ]Scan different ports and different prtocols http:// & https://
-  [ ]Make app more easy and resposive
-  [ ]Make app faster
+  []Scan different ports and different prtocols http:// & https://
+  []Make app more easy and resposive
+  []Make app faster
