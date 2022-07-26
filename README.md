@@ -12,3 +12,5 @@ In output you see -> response code, server type , via (some cdn headers) and loc
   - [ ] Scan different ports and different prtocols http:// & https://
   - [ ] Make app more easy and resposive
   - [ ] Make app faster
+  - [ ] Make multithreading
+  - [ ] Port app to python
